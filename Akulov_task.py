@@ -79,5 +79,14 @@ def task_5():
 
 
 def task_6():
-    text = "В коробке находятся 7 новых и 3 израсходованные батарейки для фотоаппарата. Какова вероятность того, что две вынутые наугад" \
-           "батарейки окажутся новыми?"
+    vsego = randint(6,12)
+    new = vsego-int((vsego/3))
+    old = vsego-new
+    need = randint(2,new)
+    answer="6.\n"
+    text = f"6. В коробке находятся {new} новых и {old} израсходованные батарейки для фотоаппарата. Какова вероятность того, что {need} вынутые наугад" \
+           "батарейки окажутся новыми?\n"
+    o = combination(new,need)[1]/combination(vsego,need)[1]
+    answer += f"{round(o,5)}, {combination(new,need)[2]}/{combination(vsego,need)[2]}\n"
+    return text,answer
+
