@@ -205,40 +205,42 @@ def task_12():
     answer += "F(x):\n"
     answer += "\t| 0, x<=0\n"
     answer += f"\t| {p0}, 0<x<=1\n"
-    answer += f"\t| {p0+p1}, 1<x<=2\n"
-    answer += f"\t| {p0+p1+p2}, 2<x<=3\n"
+    answer += f"\t| {p0 + p1}, 1<x<=2\n"
+    answer += f"\t| {p0 + p1 + p2}, 2<x<=3\n"
     answer += f"\t| 1, 3<x\n"
 
     return text, answer
 
-def task_13():
-    p = randint(1,5)/100
-    q = round(1-p,2)
-    n = randint(6,9)
-    answer = "13. \n"
-    text=f"Вероятность отказа локомотива на линии за время полного оборота составляет {p}. "\
-        f"На линии работает {n} локомотивов. Составить ряд распределения числа отказов. "\
-         "Найти M(X) и D(X) этой случайной величины.\n"
-    answer+="X|\t"
-    for i in range(0,4):
-        answer+=f"{i}\t\t\t|\t\t\t\t"
-    answer+=f"... |\t\t{n}\nP|\t"
-    answer+=f"{q}^{n}\t"
-    for i in range(1,4):
-        answer+=f"\t|{combination(n,i)[2]}*{p}^{i}*{q}^{n-i}"
-    answer+=f" |\t\t\t\t... |\t{p}^{n}\t\n\n"
-    answer+=f"M(X) = {round(n*p,3)}\nD(X) = {round(n*p*q,5)}\n"
 
-    return text,answer
+def task_13():
+    p = randint(1, 5) / 100
+    q = round(1 - p, 2)
+    n = randint(6, 9)
+    answer = "13. \n"
+    text = f"Вероятность отказа локомотива на линии за время полного оборота составляет {p}. " \
+           f"На линии работает {n} локомотивов. Составить ряд распределения числа отказов. " \
+           "Найти M(X) и D(X) этой случайной величины.\n"
+    answer += "X|\t"
+    for i in range(0, 4):
+        answer += f"{i}\t\t\t|\t\t\t\t"
+    answer += f"... |\t\t{n}\nP|\t"
+    answer += f"{q}^{n}\t"
+    for i in range(1, 4):
+        answer += f"\t|{combination(n, i)[2]}*{p}^{i}*{q}^{n - i}"
+    answer += f" |\t\t\t\t... |\t{p}^{n}\t\n\n"
+    answer += f"M(X) = {round(n * p, 3)}\nD(X) = {round(n * p * q, 5)}\n"
+
+    return text, answer
+
 
 def task_14():
     p = randint(1, 5) / 100
     q = round(1 - p, 2)
-    n = randint(10,20)*10
-    answer="14. \n"
-    text=f"Вероятность выхода из строя монитора компьютера после оговоренного срока работы равна {p}. "\
-        f"Проведены наблюдения за работой {n} мониторов. Составить ряд распределения числа мониторов, вышедших из "\
-        "строя после оговоренного срока работы. Найти M(X) этой случайной величины.\n"
+    n = randint(10, 20) * 10
+    answer = "14. \n"
+    text = f"Вероятность выхода из строя монитора компьютера после оговоренного срока работы равна {p}. " \
+           f"Проведены наблюдения за работой {n} мониторов. Составить ряд распределения числа мониторов, вышедших из " \
+           "строя после оговоренного срока работы. Найти M(X) этой случайной величины.\n"
     answer += "X|\t"
     for i in range(0, 4):
         answer += f"{i}\t\t\t|\t\t\t\t\t"
@@ -247,7 +249,52 @@ def task_14():
     for i in range(1, 4):
         answer += f"|{combination(n, i)[2]}*{p}^{i}*{q}^{n - i} "
     answer += f" |\t\t\t\t\t... |\t\t{p}^{n}\t\n\n"
-    answer+=f"M(X)={round(n*p,5)}\n"
+    answer += f"M(X)={round(n * p, 5)}\n"
 
-    return text,answer
+    return text, answer
 
+
+def task_15():
+    x1 = -3
+    x2 = 1
+    x3 = 5
+    p1 = randint(2,4)/10
+    p2 = randint(15,35)/100
+    p3 = round(1-p1-p2,3)
+    dictx = {x1: p1, x2: p2, x3: p3}
+    y1 = 2
+    y2 = 4
+    q1 = randint(2,6)/10
+    q2 = round(1-q1,3)
+    dicty = {y1: q1, y2: q2}
+    text = f"X\t|\t{x1} |\t{x2}\t|\t{x3}\t|\n"
+    text += f"P\t|\t{p1}|\t{p2}|\t{p3}|\n\n"
+    text += f"Y\t|\t{y1}\t|\t{y2}\t|\n"
+    text += f"Q\t|\t{q1} |\t{q2}\t|\n\n"
+
+    answer = "15.\n"
+    text += "15. Независимые случайные величины X и Y заданы таблицами распределений. Найти: \n"
+    text += "1) M(X), M(Y), D(X), D(Y);"
+    answer += f"1) M(X)={round(x1 * p1 + x2 * p2 + x3 * p3, 4)} \nD(X)={round(discr_dispersion(dictx), 4)}\n"
+    answer += f"M(Y)={round(discr_math_expectation(dicty), 4)}\nD(Y)={round(discr_dispersion(dicty), 4)}\n"
+
+    text += "2) таблицы распределения случайных величин Z1 = 2X+Y, Z2 = X*Y;\n"
+    answer += "2)\nZ1=2X+Y\n"
+    answer+=f"Z1\t|\t{2*x1+y1}\t|\t{2*x1+y2}\t|\t{2*x2+y1}\t|\t{2*x2+y2}\t|\t{2*x3+y1}\t|\t{2*x3+y2}\t|\n"
+    answer+=f"P1\t|  {round(p1*q1,3)} |  {round(p1*q2,3)} |  {round(p2*q1,3)} |  {round(p2*q2,3)} |  {round(p3*q1,3)} |  {round(p3*q2,3)} |\n\n"
+    dictz1 = {2*x1+y1:round(p1*q1,3), 2*x1+y2:round(p1*q2,3),2*x2+y1:round(p2*q1,3),2*x2+y2:round(p2*q2,3),2*x3+y1:round(p3*q1,3),2*x3+y2:round(p3*q2,3)}
+
+    answer+="Z2 = X*Y\n"
+    answer += f"Z1\t|\t{x1*y1}\t|\t{x1*y2}\t|\t{x2*y1}\t|\t{x2*y2}\t|\t{x3*y1}\t|\t{x3*y2}\t|\n"
+    answer += f"P1\t|  {round(p1 * q1, 3)} |  {round(p1 * q2, 3)} |  {round(p2 * q1, 3)} |  {round(p2 * q2, 3)} |  {round(p3 * q1, 3)} |  {round(p3 * q2, 3)} |\n\n"
+    dictz2 = {x1*y1: round(p1 * q1, 3), x1*y2: round(p1 * q2, 3), x2*y1: round(p2 * q1, 3),
+              x2*y2: round(p2 * q2, 3), x3*y1: round(p3 * q1, 3), x3*y2: round(p3 * q2, 3)}
+
+    text+="3) M(Z1), M(Z2), D(Z1), D(Z2) непосредственно по таблицам распределений и на основании свойств математического ожидания и дисперсии."
+    answer+=f"3) M(Z1)={round(discr_math_expectation(dictz1),4)} \nM(Z2)={round(discr_math_expectation(dictz2),4)}\n"
+    answer+=f"D(Z1)={round(discr_dispersion(dictz1),4)} \nD(Z2)={round(discr_dispersion(dictz2),4)}\n"
+    return text, answer
+
+
+def task_16():
+    return None
