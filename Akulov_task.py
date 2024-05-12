@@ -297,4 +297,107 @@ def task_15():
 
 
 def task_16():
-    return None
+    text = '16. Дана функция распределения F(x) непрерывной случайной величины X.\n' \
+           'Требуется:\n1) найти плотность вероятности f(x);\n2) построить графики F(x) и f(x);\n' \
+           '3) найти M(X), D(X), (Х);\n4) найти Р(α < X < β) для данных α, β\n'
+    text += '\t|\t0, x <= -π/2;\nF(x)= |\tcosx, -π/2 < x <= 0;\n\t|\t1, x > 0;\n'
+
+    alfa = '-π/2'
+    beta = '-π/6'
+    alfa_type = randint(1, 2)
+    if alfa_type == 2:
+        alfa = '-π/4'
+        beta = '-π/3'
+    text += f'α = {alfa}, β = {beta}\n'
+
+    answer="16. \n"
+    answer += '\t|\t0, x <= -π/2;\nf(x)= |\t-sinx, -π/2 < x <= 0;\n\t|\t0, x > 0;\n'
+    answer += 'M(X) = 1, M(X^2) = π+1, \nD(X) = π, ' \
+              'Отклонение = √π\n'
+    if alfa_type == 1:
+        answer += f'P(α < x < β) = P({alfa} < x < {beta}) = √3/2'
+    else:
+        answer += f'P(α < x < β) = P({alfa} < x < {beta}) = (1 - √2)/2'
+
+    return text, answer
+
+def task_17():
+    answer = '17.\n '
+    alfa = randint(1, 2)
+    beta = randint(3, 5)
+    text = '17. 1) проверить свойство  ∫( f(x)dx ) = 1;\n' \
+           '2) построить график f(x);\n3) найти функцию распределения F(x);\n' \
+           '4) найти Р(α < X < β) для данных α, β;\n5) найти М(Х), D(X), σ(X).\n'
+    text += '\t |\t0, x <= -1;\n\t |\t1/4, -1 < x <= 2;\nf(x)=|\t1/36 * (x-5)^2, 2 < x <= 5;\n\t |\t0, x>5;\n'
+    text += f'α = {alfa}, β = {beta}\n'
+
+    answer += '\t |\t1, x <= -1;\n\t |\t1/4*x, -1 < x <= 2;\nF(x)=|' \
+              '\t1/108 * (x-5)^3, 2 < x <= 5;\n\t |\t1, x>5;\n'
+
+    num = round(((beta-5)**3)/108, 3)
+    num -= round(alfa/4, 3)
+    answer += f'Р(α < X < β) = P({alfa} < X < {beta}) = {num}\n'
+
+    MX = round(3/8+11/16, 3)
+    MX2 = round(3/4+79/40, 3)
+    DX = round(MX2 - MX ** 2, 3)
+    std = round(math.sqrt((DX)), 3)
+    answer += f'M(X) = {MX}, D(X) = {DX}, Отклонение = {std}\n'
+
+    return text, answer
+
+def task_18():
+    dlina = randint(12,20)*10
+    delta = randint(8,14)
+    more = dlina+delta-2
+    text = f"18. Автомат штампует детали. Проектная длина детали равна {dlina} мм. Фактическая длина детали X распределена нормально (m = {dlina} мм). "\
+            f"При контроле работы автомата выяснилось, что длина изготовленных деталей {dlina-delta} X {dlina+delta} (мм). "\
+            f"Какова вероятность того, что длина наугад взятой детали более {more} мм?\n"
+    answer = "18. \n"
+    answer+=f"P = {local_lapl((more-dlina)/delta)}"
+
+    return text, answer
+
+def task_19():
+    time = randint(120,140)*10
+    text=f"19. Время T работы рессорного подвешивания до выхода из строя имеет экспоненциальное распределение с математическим ожиданием {time} ч. "\
+          f"Какова вероятность того, что данный комплект рессор проработает до выхода из строя: а) не менее {time} ч; б) от {time} до {time*2} ч; в) менее 500 ч?\n"
+    answer="19.\n"
+    answer+=f"a) {round(1-math.exp(-(time/time)),5)}\n"
+    answer+=f"б) {round(math.exp(-(time/time))-math.exp(-((time*2)/time)),5)}\n"
+    answer+=f"в) {round(1-math.exp(-500/time),5)}"
+
+    return text,answer
+
+def task_20():
+    mat = randint(4,6)*10
+    disp = randint(2,4)
+    sigma = round(math.sqrt(disp),3)
+    x1=mat-disp
+    x2=mat+disp
+    text=(f"20. Длина изделий, выпускаемых цехом, имеет нормальное распределение с параметрами: математическое ожидание m = {mat} см, дисперсия D = {disp} см2. "
+          f"Записать формулу f(x) для длины изделий. Какова вероятность того, что длина наугад взятого изделия находится в интервале от {x1} до {x2} см?\n")
+    answer="20.\n"
+    answer+=f"f(x)=1/(2*√π*√{disp})*e^(-(x-{mat})^2/(2*{disp}))\n"
+    z1=round((x1-mat)/sigma,2)
+    z2 = round((x2 - mat) / sigma, 2)
+    answer+=f"P = {round(2*integr_lapl(z2),3)}"
+
+    return text,answer
+
+def task_21():
+    vsego = randint(55,65)
+    m = randint(60,64)
+    delta = randint(1,2)
+    maxi = randint(vsego*m+6,vsego*m+30)
+    text=(f"21. В составе имеется {vsego} цистерны с нефтью, причем масса каждой цистерны Xi имеет одно и то же нормальное распределение (m = {m} т;σ = {delta} т). "
+          f"Один тепловоз может везти состав массой не более {maxi} т, иначе необходимо прицеплять второй. Какова вероятность того, что потребуется кратная тяга?\n")
+    mat=vsego*m
+    disper = delta**2*64
+    sigma=math.sqrt(disper)
+    num = (maxi-mat)/sigma
+    answer="21. \n"
+    answer+=f"P = {local_lapl((maxi-mat)/sigma)}\n(M(X)={mat};D(X)={disper};σ={sigma})"
+
+    return text,answer
+
