@@ -3,10 +3,9 @@ from random import uniform
 # inuform(начало, конец) - возрщает рандомное вещественное в диапазоне включая концы
 # randint(начало, конец) - возрщает рандомное целое в диапазоне включая концы
 
-from functions import local_lapl
-from functions import integr_lapl
 import Akulov_task
 import sys
+import os
 
 from tkinter import *
 from tkinter import messagebox
