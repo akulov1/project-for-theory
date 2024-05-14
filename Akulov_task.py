@@ -397,6 +397,6 @@ def task_21():
     sigma=math.sqrt(disper)
     num = (maxi-mat)/sigma
     answer="21. \n"
-    answer+=f"P = {local_lapl((maxi-mat)/sigma)}\n(M(X)={mat};D(X)={disper};σ={sigma})"
+    answer+=f"P = {round(0.5-integr_lapl(round((maxi-mat)/sigma,2)),5)}\n(M(X)={mat};D(X)={disper};σ={sigma})"
 
     return text,answer
