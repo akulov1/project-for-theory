@@ -354,7 +354,7 @@ def task_18():
             f"При контроле работы автомата выяснилось, что длина изготовленных деталей {dlina-delta} X {dlina+delta} (мм). "\
             f"Какова вероятность того, что длина наугад взятой детали более {more} мм?\n"
     answer = "18. \n"
-    answer+=f"P = {local_lapl((more-dlina)/delta)}"
+    answer+=f"P = {round(0.5-float(integr_lapl(round((more-dlina)/delta,2))),5)}"
 
     return text, answer
 
@@ -400,4 +400,3 @@ def task_21():
     answer+=f"P = {local_lapl((maxi-mat)/sigma)}\n(M(X)={mat};D(X)={disper};σ={sigma})"
 
     return text,answer
-
