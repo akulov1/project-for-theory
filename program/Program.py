@@ -1,0 +1,353 @@
+from random import randint
+from random import uniform
+# inuform(начало, конец) - возрщает рандомное вещественное в диапазоне включая концы
+# randint(начало, конец) - возрщает рандомное целое в диапазоне включая концы
+
+import Akulov_task
+import Kim_tasks
+import Inevatkin_tasks
+import sys
+import os
+
+from tkinter import *
+from tkinter import messagebox
+from tkinter.ttk import Checkbutton
+
+def clicked():
+    global variants_count
+    global tasks_num_list
+    if txt.get() != '':
+        variants_count = int(txt.get())
+    else:
+        variants_count = 1
+    if chk_all.get():
+        for i in range(1, 22):
+            tasks_num_list.append(i)
+    else:
+        number = 1
+        for i in check_list:
+            if i.get():
+                tasks_num_list.append(number)
+            number += 1
+    mess = messagebox.showinfo("Подтверждение","Файл с заданиями обновится после нажатия на кнопку ОК!")
+    if mess == 'ok':
+        window.after(1000, window.destroy)
+
+
+
+variants_count = 0
+tasks_num_list = []  # множество заданий, которые нужно сгенерировать
+
+window = Tk()
+window.geometry('400x600')
+
+window.title('Генератор заданий')
+count_var_label = Label(window, text='Введите количество вариантов: ',font=("Times New Roman",14,"bold"))
+count_var_label.grid(column=0, row=0)
+
+txt = Entry(window, width=10)
+txt.grid(column=1, row=0)
+txt.focus()
+
+chk_all = BooleanVar()
+chk_all.set(False)  # задайте проверку состояния чекбокса
+all_tasks_check = Checkbutton(window, text='Все задания', var=chk_all)
+all_tasks_check.grid(column=0, row=2)
+
+check_list = []
+for i in range(0, 21):
+    check_list.append(BooleanVar())
+    check_list[i].set(False)
+
+for i in range(0, 21):
+    if i < 9:
+        task_check = Checkbutton(window, text=f'0{i + 1}', var=check_list[i], width=10)
+    else:
+        task_check = Checkbutton(window, text=f'{i + 1}', var=check_list[i], width=10)
+    task_check.grid(column=0, row=i + 3)
+btn = Button(window, text='Создать документ', bg='orange', fg='black', command=clicked)
+btn.grid(row=27)
+
+window.mainloop()
+N = 21  # сколько всего задач в варианте
+
+tasks = open('задания.doc', 'w', encoding='utf-8')
+answers = open('ответы.doc', 'w', encoding='utf-8')
+for i in range(0, variants_count):
+    tasks.write(f'ВАРИАНТ {i + 1}\n')
+    answers.write(f'ВАРИАНТ {i + 1}\n')
+    for task in tasks_num_list:  # идем по списку с номерами заданий
+        if task == 1:  # если номер = 1, то пишем его
+            coin_flip = randint(1,3)
+            if coin_flip == 1:  # задание Егора
+                text, answer = Akulov_task.task_1()
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_1()
+            else:
+                text, answer = Inevatkin_tasks.task_1()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 2:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_2()
+             
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_2()
+            else:
+                text, answer = Inevatkin_tasks.task_2()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 3:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_3()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_3()
+            else:
+                text, answer = Inevatkin_tasks.task_3()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 4:
+            coin_flip = randint(1,3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            if coin_flip == 1:  # задание Егора
+                text, answer = Akulov_task.task_4()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_4()
+            else:
+                text, answer = Inevatkin_tasks.task_4()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 5:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
+                pass
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_5()
+            else:
+                text, answer = Inevatkin_tasks.task_5()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 6:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:  # задание Егора
+                text, answer = Akulov_task.task_6()
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_6()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_6()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 7:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_7()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_7()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_7()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 8:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_8()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_8()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_8()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 9:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_9()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_9()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_9()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 10:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_10()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_10()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_10()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 11:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_11()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_11()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_11()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 12:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:  # задание Егора
+                text, answer = Akulov_task.task_12()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_12()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_12()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 13:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_13()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_13()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_13()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 14:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_14()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_14()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_14()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 15:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_15()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_15()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_15()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 16:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_16()
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_16()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_16()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 17:
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_17()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_17()
+            # else:
+            #     text, answer = Inevatkin_tasks.task_17()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 18:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:  # задание Егора
+                text, answer = Akulov_task.task_18()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_18()
+            else:
+                text, answer = Inevatkin_tasks.task_18()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 19:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_19()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_19()
+            else:
+                text, answer = Inevatkin_tasks.task_19()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+
+        if task == 20:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_20()
+
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_20()
+            else:
+                text, answer = Inevatkin_tasks.task_20()
+            tasks.write(text+'\n')
+            answers.write(answer+'\n')
+            continue
+        if task == 21:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
+                text, answer = Akulov_task.task_21()
+            elif coin_flip == 2:
+                text, answer = Kim_tasks.task_21()
+            else:
+                text, answer = Inevatkin_tasks.task_21()
+            tasks.write(text + '\n')
+            answers.write(answer + '\n')
+            continue
+
+    tasks.write('\n\n')
+    answers.write('\n\n')
+
+tasks.close()
+answers.close()
+
+
