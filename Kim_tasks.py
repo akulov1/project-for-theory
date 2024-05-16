@@ -158,11 +158,11 @@ def task_9():
     n = randint(5, 10)
     falshivka = randint(2, 12)
     proknulo = randint(2, 4)
-    text = f"9. Пара одинаковых игральных костей бросается {int(n)} раз." \
+    text = f"9. Пара одинаковых игральных костей бросается {n} раз." \
            f"Какова вероятность того, что сумма очков, выпавших на обеих костях, равная {int(falshivka)}, повторится {int(proknulo)}?\n"
     a = (combination(n, proknulo)[1] * ((1 / 36) ** proknulo) * ((35 / 36) ** (n - proknulo)))
     answer = "9. \n"
-    answer += f"{round(a, 6)}\n"
+    answer += f"{round(a, 4)}\n"
     return text, answer
 
 

@@ -5,6 +5,7 @@ from random import uniform
 
 import Akulov_task
 import Kim_tasks
+import Inevatkin_tasks
 import sys
 import os
 
@@ -77,271 +78,268 @@ for i in range(0, variants_count):
     answers.write(f'ВАРИАНТ {i + 1}\n')
     for task in tasks_num_list:  # идем по списку с номерами заданий
         if task == 1:  # если номер = 1, то пишем его
-            #coin_flip = randint(1, 3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            coin_flip = 2
+            coin_flip = randint(1,3)
             if coin_flip == 1:  # задание Егора
                 text, answer = Akulov_task.task_1()
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_1()
-            #else:
-            #    text, answer = Dima_tasks.task_1()
+            else:
+                text, answer = Inevatkin_tasks.task_1()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
-        if task == 2:  # если номер = 2, то пишем 2 и т.д.
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+        if task == 2:
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_2()
              
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_2()
-            # else:
-            #     text, answer = Dima_tasks.task_2()
+            else:
+                text, answer = Inevatkin_tasks.task_2()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 3:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_3()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_3()
-            # else:
-            #     text, answer = Dima_tasks.task_3()
+            else:
+                text, answer = Inevatkin_tasks.task_3()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 4:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = randint(1,3)  # 1 - вариант Егора, 2 - Маги, 3 - Димы
             if coin_flip == 1:  # задание Егора
                 text, answer = Akulov_task.task_4()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_4()
-            # else:
-            #     text, answer = Dima_tasks.task_4()
+            else:
+                text, answer = Inevatkin_tasks.task_4()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 5:
-            coin_flip = 2# 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
                 pass
-
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_5()
-            # else:
-            #     text, answer = Dima_tasks.task_5()
+            else:
+                text, answer = Inevatkin_tasks.task_5()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 6:
-            coin_flip = 2# 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = randint(1,2)
             if coin_flip == 1:  # задание Егора
                 text, answer = Akulov_task.task_6()
-
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_6()
             # else:
-            #     text, answer = Dima_tasks.task_6()
+            #     text, answer = Inevatkin_tasks.task_6()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 7:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_7()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_7()
             # else:
-            #     text, answer = Dima_tasks.task_7()
+            #     text, answer = Inevatkin_tasks.task_7()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 8:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_8()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_8()
             # else:
-            #     text, answer = Dima_tasks.task_8()
+            #     text, answer = Inevatkin_tasks.task_8()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 9:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_9()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_9()
             # else:
-            #     text, answer = Dima_tasks.task_9()
+            #     text, answer = Inevatkin_tasks.task_9()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 10:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_10()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_10()
             # else:
-            #     text, answer = Dima_tasks.task_10()
+            #     text, answer = Inevatkin_tasks.task_10()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 11:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_11()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_11()
             # else:
-            #     text, answer = Dima_tasks.task_11()
+            #     text, answer = Inevatkin_tasks.task_11()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 12:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = randint(1,2)
             if coin_flip == 1:  # задание Егора
                 text, answer = Akulov_task.task_12()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_12()
             # else:
-            #     text, answer = Dima_tasks.task_12()
+            #     text, answer = Inevatkin_tasks.task_12()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 13:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_13()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_13()
             # else:
-            #     text, answer = Dima_tasks.task_13()
+            #     text, answer = Inevatkin_tasks.task_13()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 14:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_14()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_14()
             # else:
-            #     text, answer = Dima_tasks.task_14()
+            #     text, answer = Inevatkin_tasks.task_14()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 15:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_15()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_15()
             # else:
-            #     text, answer = Dima_tasks.task_15()
+            #     text, answer = Inevatkin_tasks.task_15()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 16:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_16()
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_16()
             # else:
-            #     text, answer = Dima_tasks.task_16()
+            #     text, answer = Inevatkin_tasks.task_16()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 17:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,2)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_17()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_17()
             # else:
-            #     text, answer = Dima_tasks.task_17()
+            #     text, answer = Inevatkin_tasks.task_17()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 18:
-            coin_flip = 2 # 1 - вариант Егора, 2 - Маги, 3 - Димы
+            coin_flip = randint(1,3)
             if coin_flip == 1:  # задание Егора
                 text, answer = Akulov_task.task_18()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_18()
-            # else:
-            #     text, answer = Dima_tasks.task_18()
+            else:
+                text, answer = Inevatkin_tasks.task_18()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 19:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_19()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_19()
-            # else:
-            #     text, answer = Dima_tasks.task_19()
+            else:
+                text, answer = Inevatkin_tasks.task_19()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
 
         if task == 20:
-            coin_flip = 2  # 1 - вариант Егора, 2 - Маги, 3 - Димы
-            if coin_flip == 1:  # задание Егора
+            coin_flip = randint(1,3)
+            if coin_flip == 1:
                 text, answer = Akulov_task.task_20()
 
             elif coin_flip == 2:
                 text, answer = Kim_tasks.task_20()
-            # else:
-            #     text, answer = Dima_tasks.task_20()
+            else:
+                text, answer = Inevatkin_tasks.task_20()
             tasks.write(text+'\n')
             answers.write(answer+'\n')
             continue
         if task == 21:
-            coin_flip = 1
+            coin_flip = randint(1,3)
             if coin_flip == 1:
                 text, answer = Akulov_task.task_21()
             elif coin_flip == 2:
-                print(1)
                 text, answer = Kim_tasks.task_21()
-                print(2)
+            else:
+                text, answer = Inevatkin_tasks.task_21()
             tasks.write(text + '\n')
             answers.write(answer + '\n')
             continue
