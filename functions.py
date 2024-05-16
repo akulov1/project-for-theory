@@ -36,14 +36,14 @@ def placement_with_repeat(n, k):
 #Локальная и интегральная таблицы Лапласа
 
 # Здесь работаю с файлами, в которых лежат табличные значения
-local_teor_file = open("D:\Study\probability\local_teor.txt", "r")
+local_teor_file = open("local_teor.txt", "r")
 local_teor_list = []
 for line in local_teor_file:
   line = line[:-1]
   my_list = line.split(' ')
   local_teor_list.append(my_list[1:])
 
-integr_teor_file = open('D:\Study\probability\integr_teor.txt', 'r')
+integr_teor_file = open('integr_teor.txt', 'r')
 integr_teor_dict = {}
 counter = 0
 for line in integr_teor_file:
